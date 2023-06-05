@@ -100,7 +100,7 @@ section.speciality .specialServices .cardBox:hover {
 	</div>
 
 	<div class="container p-3">
-		<p class="text-center fs-1 text-light bg text-light">Key Features of our Hospital</p>
+		<p class="text-center fs-1 text-light bg text-dark">Key Features of our Hospital</p>
 
 		<div class="row">
 		<div class="col-md-4">

@@ -79,13 +79,13 @@ li{
 			<%-- <c:if test="${empty userObj }">	--%>			
 			
 				<li class="nav-item"><a class="nav-link active"	
-				aria-current="page" href="/demoProject/src/main/webapp/WEB-INF/views/admin_login.jsp"><i class="fas fa-sign-in-alt"></i> ADMIN</a></li>
+				aria-current="page" href="/adminLogin"><i class="fas fa-sign-in-alt"></i> ADMIN</a></li>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="doctor_login.jsp">DOCTOR</a></li>
+						aria-current="page" href="/doctorLogin">DOCTOR</a></li>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="user_appointment.jsp">APPOINTMENT</a></li>
+						aria-current="page" href="/userAppointment">APPOINTMENT</a></li>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="user_login.jsp">USER</a></li>
+						aria-current="page" href="/users/userLogin">USER</a></li>
 			
 			<%-- </c:if> --%>
 					

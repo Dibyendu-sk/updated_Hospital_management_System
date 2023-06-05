@@ -1,28 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page isELIgnored="false" %>
+--%>
 <!DOCTYPE html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Login Page</title>
+<title>User Login Page</title>
 <%@include file="component/allcss.jsp"%>
 <style type="text/css">
 .paint-card {
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
-.cc{
+.cc1{
 	border-radius: 10px;
-/* 	color: white; */
-	color: white;
 	background-color: #48b4e0;
 	border-style: ridge;
 	border-width: 4px;
-	border-color: #48b4e0
-}
-.mb-3{
-	color: #2195c4;
+	border-color: #48b4e0;
 }
 .btn-outline-success{
 	background-color: white;
@@ -33,8 +30,11 @@
 	background-color: #48b4e0;
 	color: white;
 	border-color: #48b4e0;
-	border-style:ridge;
+	border-style: ridge;
 	border-width: 3px;
+}
+.mb-3{
+	color: #2195c4;
 }
 body{
 	background-image: url("img/v7.jpg");
@@ -50,9 +50,9 @@ body{
 			<div class="col-md-4 offset-md-4">
 				<div class="card paint-card">
 					<div class="card-body">
-						<p class="fw-bold fs-4 text-center cc">Admin Login</p>
-						
-						<c:if test="${not empty successMsg }">
+						<p class="fw-bold fs-4 text-center text-light cc1">User Login</p>
+
+					<%-- 	<c:if test="${not empty successMsg }">
 							<p class="text-center text-success fs-3">${successMsg}</p>
 							<c:remove var="successMsg" scope="session" />
 						</c:if>
@@ -61,20 +61,40 @@ body{
 							<p class="text-center text-danger fs-5">${errorMsg}</p>
 							<c:remove var="errorMsg" scope="session" />
 						</c:if>
-
-						<form action="adminLogin" method="post" class="fw-bold">
-							<div class="mb-3">
+					--%>
+						<%-- userLogin --%>
+						<%-- <form action="" method="post">
+							<div class="mb-3 fw-bold">
 								<label class="form-label">Email address</label> <input required
 									name="email" type="email" class="form-control">
 							</div>
 
-							<div class="mb-3">
+							<div class="mb-3 fw-bold">
 								<label class="form-label">Password</label> <input required
 									name="password" type="password" class="form-control">
 							</div>
+							
 
 							<button type="submit" class="fw-bold btn btn-outline-success col-md-12">Login</button>
-						</form>
+						</form> --%>
+						
+						<form:form method="POST" action="/users/loginProcess" class="fw-bold" modelAttribute="user">
+								    
+								    <div class="mb-3 fw-bold">
+									    <label for="email" class="form-label">Email Address</label>
+									    <form:input type="email" path="" name="email" required="true" class="form-control"/>
+								    </div>
+								    
+								    <div class="mb-3 fw-bold">
+									    <label for="password" class="form-label">Password</label>
+									    <form:input type="password" path="" name="password" required="true" class="form-control"/>
+								    </div>
+								    
+								    <button type="submit" class="fw-bold btn btn-outline-success col-md-12">Login</button>
+								</form:form>
+						<br> Don't have an account? <a href="/users/signUp"
+							class="text-decoration-none"> create one</a>
+
 					</div>
 				</div>
 			</div>
@@ -85,10 +105,9 @@ body{
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<%@include file="component/footer.jsp" %>
+	<br><br>
+	<%@include file="component/footer.jsp"%>
+	
+	
 </body>
 </html>
