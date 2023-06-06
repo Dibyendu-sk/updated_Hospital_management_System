@@ -63,7 +63,7 @@ body{
 						</c:if>
 					--%>
 						<%-- userLogin --%>
-						<%-- <form action="" method="post">
+						<form action="/users/loginProcess" method="post">
 							<div class="mb-3 fw-bold">
 								<label class="form-label">Email address</label> <input required
 									name="email" type="email" class="form-control">
@@ -76,9 +76,10 @@ body{
 							
 
 							<button type="submit" class="fw-bold btn btn-outline-success col-md-12">Login</button>
-						</form> --%>
+						</form>
 						
-						<form:form method="POST" action="/users/loginProcess" class="fw-bold" modelAttribute="user">
+						<%-- 
+						<form:form method="POST" action="" class="fw-bold" modelAttribute="user">
 								    
 								    <div class="mb-3 fw-bold">
 									    <label for="email" class="form-label">Email Address</label>
@@ -91,7 +92,7 @@ body{
 								    </div>
 								    
 								    <button type="submit" class="fw-bold btn btn-outline-success col-md-12">Login</button>
-								</form:form>
+								</form:form> --%>
 						<br> Don't have an account? <a href="/users/signUp"
 							class="text-decoration-none"> create one</a>
 

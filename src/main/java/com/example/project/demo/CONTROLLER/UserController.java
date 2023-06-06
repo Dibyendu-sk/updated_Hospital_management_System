@@ -50,12 +50,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/loginProcess")
-	public String processLogin(@ModelAttribute("user") User user,RedirectAttributes ra,HttpServletRequest request,BindingResult bindingResult) {
-		
-		if (bindingResult.hasErrors()) {
-            // Handle validation errors
-            return "user_login";
-        }
+	public String processLogin(RedirectAttributes ra,HttpServletRequest request) {
 		
 		String email=request.getParameter("email");
 		String pass=request.getParameter("password");
@@ -65,13 +60,13 @@ public class UserController {
 		User u=us.userLogin(email, password);
 		
 		if(u!=null) {
-			ra.addFlashAttribute("userObj",user);
 			
-			return "hello";
+			
+			return "/";
 		}
 		else {
 		
-		return "user_login";
+		return "redirect:/users/userLogin";
 		}
 	}
 }
