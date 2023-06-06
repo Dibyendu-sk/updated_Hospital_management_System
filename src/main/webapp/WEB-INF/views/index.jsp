@@ -7,7 +7,7 @@
 <title>Main Page </title>
 <%@include file="component/allcss.jsp"%>
 
-<style type="text/css">
+<style>
 section.speciality .specialServices .cardBox a:hover{
 	color: #48b4e0;
 }

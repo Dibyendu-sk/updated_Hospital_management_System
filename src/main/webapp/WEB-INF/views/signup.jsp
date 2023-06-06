@@ -104,7 +104,7 @@ body{
 							<form:form method="POST" action="/users/saveUser" class="fw-bold" modelAttribute="user">
 							<div class="mb-3">
 							<br>
-								    <label for="fullName" class="form-label">First Name:</label>
+								    <label for="fullName" class="form-label">Full Name:</label>
 								    <form:input type="text" path="fullName" name="fullName" required="true" class="form-control"/>
 								    
 								    

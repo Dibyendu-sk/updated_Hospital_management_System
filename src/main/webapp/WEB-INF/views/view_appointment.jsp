@@ -46,9 +46,9 @@
 </head>
 <body>
 
-	<c:if test="${empty userObj }">
+	<%-- <c:if test="${empty userObj }">
 		<c:redirect url="user_login.jsp"></c:redirect>
-	</c:if>
+	</c:if> --%>
 	<%@include file="component/navbar.jsp"%>
 
 <!-- 	<div class="container-fulid backImg p-5"> -->
@@ -76,7 +76,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<%
+							<%-- 	<%
 	 								User u = (User) session.getAttribute("userObj"); 								
 									AppointmentDao dao = new AppointmentDao(DBConnect.getConn()); 
 	 								DoctorDao dao2 = new DoctorDao(DBConnect.getConn()); 
@@ -104,7 +104,7 @@
 								</tr>
 								<%
  								}
-								%>
+								%> --%>
 
 							</tbody>
 						</table>

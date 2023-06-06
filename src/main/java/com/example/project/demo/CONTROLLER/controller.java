@@ -28,12 +28,6 @@ public class controller {
 		return new ModelAndView("doctor_login");
 	}
 	
-	@GetMapping("/userAppointment")
-	public ModelAndView userAppointment() {
-		return new ModelAndView("user_appointment");
-	}
-	
-	
 	
 	@GetMapping("/viewAppointment")
 	public ModelAndView viewAppointment() {

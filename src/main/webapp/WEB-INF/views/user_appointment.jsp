@@ -90,7 +90,7 @@ body{
 						</c:if>
 					--%>
 						
-						<form class="row g-3" action="addAppointment" method="post">
+						<form class="row g-3" action="/addAppointment" method="post">
 
 						<%--	<input type="hidden" name="userid" value="${userObj.id }">  --%>
 
@@ -160,14 +160,14 @@ body{
 									cols=""></textarea>
 							</div>
 
-						<%-- 	<c:if test="${empty userObj }"> --%>
+							<c:if test="${empty sessionScope.user}">
 								<a href="user_login.jsp" class="fw-bold col-md-6 offset-md-3 btn btn-outline-success">Submit</a>
-						<%-- </c:if> --%>	
+						 </c:if>	
 
-						<%-- <c:if test="${not empty userObj }">
+						<c:if test="${not empty sessionScope.user }">
 								<button class="fw-bold col-md-6 offset-md-3 btn btn-outline-success">Submit</button>
-							</c:if>
-						--%>	
+						</c:if>
+					
 							
 						</form>
 					</div>

@@ -1,6 +1,7 @@
 package com.example.project.demo.CONTROLLER;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/loginProcess")
-	public String processLogin(RedirectAttributes ra,HttpServletRequest request) {
+	public String processLogin(RedirectAttributes ra,HttpServletRequest request,HttpSession session) {
 		
 		String email=request.getParameter("email");
 		String pass=request.getParameter("password");
@@ -61,12 +62,19 @@ public class UserController {
 		
 		if(u!=null) {
 			
-			
-			return "/";
+			session.setAttribute("user", u);
+			return "redirect:/";
 		}
 		else {
 		
 		return "redirect:/users/userLogin";
 		}
 	}
+	
+	@GetMapping("/logout")
+    public String logout(HttpSession session) {
+        // Invalidate the session and redirect to the home page
+        session.invalidate();
+        return "redirect:/";
+    }
 }
