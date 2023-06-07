@@ -6,11 +6,13 @@
 		response.setHeader("Pragma", "no-cache");
 		response.setDateHeader("Expires", 0);
 		%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@page isELIgnored="false"%>
 <%@page import="com.entity.Doctor"%>
 <%@page import="java.util.List"%>
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -84,92 +86,91 @@ body{
 							<p class="fs-4 text-center text-danger">${errorMsg}</p>
 							<c:remove var="errorMsg" scope="session" />
 						</c:if>
-						<c:if test="${not empty successMsg}">
-							<p class=" fs-4 text-center text-success">${successMsg}</p>
-							<c:remove var="successMsg" scope="session" />
+						--%>
+						<c:if test="${not empty sessionScope.successMessage}">
+							<p class=" fs-4 text-center text-success">${successMessage}</p>
+							<c:remove var="successMessage" scope="session" />
 						</c:if>
-					--%>
+					
 						
-						<form class="row g-3" action="/addAppointment" method="post">
+						<form:form class="row g-3" action="/appointments/addAppointment" method="POST" modelAttribute="appointment">
 
-						<%--	<input type="hidden" name="userid" value="${userObj.id }">  --%>
+							<form:hidden name="userId" value="${user.getId()}" path="userId"/>
 
 							<div class="col-md-6 fw-bold">
-								<label for="inputEmail4" class="form-label">Full Name</label> <input
-									required type="text" class="form-control" name="fullname">
+								<label for="inputEmail4" class="form-label">Full Name</label> 
+								<form:input
+									required="true" path="fullName" type="text" class="form-control" name="fullname"/>
 							</div>
 
 							<div class="col-md-6 fw-bold">
-								<label class="form-label">Gender</label> <select class="form-control" name="gender"
-									required>
-									<option value="male">Male</option>
-									<option value="female">Female</option>
-								</select>
+								<label class="form-label">Gender</label> 
+								<form:select class="form-control" name="gender"
+									required="true" path="gender">
+									<form:option value="male" label="Male"/>
+									<form:option value="female" label="Female"/>
+								</form:select>
 							</div>
 
 							<div class="col-md-6 fw-bold">
-								<label for="inputEmail4" class="form-label">Age</label> <input
-									required type="number" class="form-control" name="age">
+								<label for="inputEmail4" class="form-label">Age</label> 
+								<form:input
+									required="true" type="number" class="form-control" name="age" path="age"/>
 							</div>
 
 							<div class="col-md-6 fw-bold">
-								<label for="inputEmail4" class="form-label">Appointment Date</label> <input type="date" class="form-control" required
-									name="appointmentdate">
+								<label for="inputEmail4" class="form-label">Appointment Date</label> 
+								<form:input type="date" class="form-control" required="true"
+									name="appointmentdate" path="appointmentdate"/>
 							</div>
 
 							<div class="col-md-6 fw-bold">
-								<label for="inputEmail4" class="form-label">Email</label> <input
-									required type="email" class="form-control" name="email">
+								<label for="inputEmail4" class="form-label">Email</label> 
+								<form:input
+									required="true" type="email" class="form-control" name="email" path="email"/>
 							</div>
 
 							<div class="col-md-6 fw-bold">
-								<label for="inputEmail4" class="form-label">Phone No</label> <input
-									maxlength="10" required type="number" class="form-control"
-									name="phno">
+								<label for="inputEmail4" class="form-label">Phone No</label> 
+								<form:input
+									maxlength="10" minlength="10" type="text" required="true" class="form-control"
+									name="phno" path="phNo"/>
 							</div>
 
 
 							<div class="col-md-6 fw-bold">
-								<label for="inputEmail4" class="form-label">Diseases</label> <input
-									required type="text" class="form-control" name="diseases">
+								<label for="inputEmail4" class="form-label">Diseases</label>
+								<form:input
+									required="true" type="text" class="form-control" name="diseases" path="diseases"/>
 							</div>
 
 							<div class="col-md-6 fw-bold">
-								<label for="inputPassword4" class="form-label">Doctor</label> <select
-									required class="form-control" name="doct">
-									<option value="">--select--</option>
+								<label for="inputPassword4" class="form-label">Doctor</label> 
+								<form:select
+									required="true" class="form-control" name="doctorId" path="doctorId">
+									<form:option value="" label="--select--"/>
 
-							<%-- 	<%
-									DoctorDao dao = new DoctorDao(DBConnect.getConn());
-									List<Doctor> list = dao.getAllDoctor();
-									for (Doctor d : list) {
-									%>
-									<option value="<%=d.getId()%>"><%=d.getFullName()%> (<%=d.getSpecialist()%>)</option>
-									<%
-									}
-									%>
-									
-								--%>	
-
-								</select>
+									<c:forEach items="${doctorList}" var="doctor">
+        									<form:option value="${doctor.getId()}" label="${doctor.getFullName()} (${doctor.getSpecialist()})"/>
+    								</c:forEach>
+								</form:select>
 							</div>
 
 							<div class="col-md-12">
 								<label>Full Address</label>
-								<textarea required name="address" class="form-control" rows="3"
-									cols=""></textarea>
+								<form:textarea required="true" name="address" class="form-control" rows="3"
+									cols="" path="address"/>
 							</div>
 
 							<c:if test="${empty sessionScope.user}">
-								<a href="user_login.jsp" class="fw-bold col-md-6 offset-md-3 btn btn-outline-success">Submit</a>
+								<a href="/users/userLogin" class="fw-bold col-md-6 offset-md-3 btn btn-outline-success">Submit</a>
 						 </c:if>	
 
 						<c:if test="${not empty sessionScope.user }">
 								<button class="fw-bold col-md-6 offset-md-3 btn btn-outline-success">Submit</button>
 						</c:if>
 					
-							
-						</form>
+						</form:form>
 					</div>
 				</div>
 			</div>

@@ -79,7 +79,7 @@ li{
 			<c:if test="${empty sessionScope.user}">		
 			
 				<li class="nav-item"><a class="nav-link active"	
-				aria-current="page" href="/adminLogin"><i class="fas fa-sign-in-alt"></i> ADMIN</a></li>
+				aria-current="page" href="/admin/adminLogin"><i class="fas fa-sign-in-alt"></i> ADMIN</a></li>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/doctorLogin">DOCTOR</a></li>
 					<li class="nav-item"><a class="nav-link active"
@@ -91,11 +91,11 @@ li{
 					
 			 <c:if test="${not empty sessionScope.user}">
 					<li class="nav-item"><a class="nav-link active" 
-						aria-current="page" href="/userAppointment">APPOINTMENT</a></li>
+						aria-current="page" href="/appointments/userAppointment">APPOINTMENT</a></li>
 						
 
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/viewAppointment">VIEW APPOINTMENT</a></li>
+						aria-current="page" href="/appointment/viewAppointment">VIEW APPOINTMENT</a></li>
 						
 
 					<div class="dropdown">

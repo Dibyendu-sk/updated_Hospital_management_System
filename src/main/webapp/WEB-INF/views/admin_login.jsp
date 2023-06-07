@@ -52,25 +52,25 @@ body{
 					<div class="card-body">
 						<p class="fw-bold fs-4 text-center cc">Admin Login</p>
 						
-						<c:if test="${not empty successMsg }">
+				<%-- 		<c:if test="${not empty successMsg }">
 							<p class="text-center text-success fs-3">${successMsg}</p>
 							<c:remove var="successMsg" scope="session" />
-						</c:if>
+						</c:if> --%>
 
-						<c:if test="${not empty errorMsg }">
+						<c:if test="${not empty sessionScope.errorMsg }">
 							<p class="text-center text-danger fs-5">${errorMsg}</p>
 							<c:remove var="errorMsg" scope="session" />
-						</c:if>
+						</c:if> 
 
-						<form action="adminLogin" method="post" class="fw-bold">
+						<form action="/admin/adminHome" method="post" class="fw-bold">
 							<div class="mb-3">
 								<label class="form-label">Email address</label> <input required
-									name="email" type="email" class="form-control">
+									name="adminEmail" type="email" class="form-control">
 							</div>
 
 							<div class="mb-3">
 								<label class="form-label">Password</label> <input required
-									name="password" type="password" class="form-control">
+									name="adminPassword" type="password" class="form-control">
 							</div>
 
 							<button type="submit" class="fw-bold btn btn-outline-success col-md-12">Login</button>

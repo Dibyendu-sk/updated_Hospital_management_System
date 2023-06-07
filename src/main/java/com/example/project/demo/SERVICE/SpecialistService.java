@@ -1,5 +1,7 @@
 package com.example.project.demo.SERVICE;
 
-public interface SpecialistService {
+import java.util.List;
 
+public interface SpecialistService {
+	public List<String> getAllSpecialists();
 }

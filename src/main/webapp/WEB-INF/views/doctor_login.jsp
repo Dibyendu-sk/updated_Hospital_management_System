@@ -63,7 +63,7 @@ body{
 						--%>
 						<%-- doctorLogin --%>
 						
-						<form action="" method="post">
+						<form action="/doctor/doctorLogin" method="post">
 							<div class="mb-3 fw-bold">
 								<label class="form-label">Email address</label> <input required
 									name="email" type="email" class="form-control">
